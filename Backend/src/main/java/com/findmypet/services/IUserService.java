@@ -1,8 +1,8 @@
 package com.findmypet.services;
 
-import com.findmypet.persistence.entities.User;
+import com.findmypet.dtos.UserDto;
 
 public interface IUserService {
 
-    User signUp(User user);
+    UserDto signUp(UserDto user);
 }

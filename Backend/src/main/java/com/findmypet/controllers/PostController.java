@@ -18,6 +18,7 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<?> addPost(@RequestBody Post post) {
+
         return ResponseEntity.ok(postService.addPost(post));
     }
 }

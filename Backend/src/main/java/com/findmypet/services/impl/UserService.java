@@ -1,5 +1,7 @@
 package com.findmypet.services.impl;
 
+import com.findmypet.dtos.UserDto;
+import com.findmypet.mappers.UserMapper;
 import com.findmypet.persistence.entities.User;
 import com.findmypet.persistence.repositories.IUserRepository;
 import com.findmypet.services.IUserService;
@@ -13,7 +15,10 @@ public class UserService implements IUserService {
     private IUserRepository userRepository;
 
     @Override
-    public User signUp(User user) {
-        return userRepository.save(user);
+    public UserDto signUp(UserDto user) {
+
+        User userToSave = UserMapper.dtoToEntity(user);
+        return UserMapper.entityToDto(userRepository.save(userToSave));
+
     }
 }

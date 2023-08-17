@@ -1,6 +1,6 @@
 package com.findmypet.controllers;
 
-import com.findmypet.persistence.entities.User;
+import com.findmypet.dtos.UserDto;
 import com.findmypet.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,9 @@ public class UserController {
     private IUserService userService;
 
     @PostMapping
-    public ResponseEntity<?> signUp(@RequestBody User user) {
+    public ResponseEntity<?> signUp(@RequestBody UserDto user) {
         return ResponseEntity.ok(userService.signUp(user));
     }
+
+
 }

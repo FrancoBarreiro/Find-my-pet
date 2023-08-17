@@ -1,5 +1,6 @@
 package com.findmypet.services.impl;
 
+import com.findmypet.dtos.PostDto;
 import com.findmypet.persistence.entities.Post;
 import com.findmypet.persistence.repositories.IPostRepository;
 import com.findmypet.services.IPostService;
