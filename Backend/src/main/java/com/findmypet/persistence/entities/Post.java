@@ -1,4 +1,4 @@
-package com.findmypet.entities;
+package com.findmypet.persistence.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,6 +21,9 @@ public class Post {
 
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "type")
+    private String type;
 
     @ElementCollection
     @CollectionTable(name = "post_images", joinColumns = @JoinColumn(name = "post_id"))

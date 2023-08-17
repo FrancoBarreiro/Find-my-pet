@@ -1,4 +1,4 @@
-package com.findmypet.entities;
+package com.findmypet.persistence.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
