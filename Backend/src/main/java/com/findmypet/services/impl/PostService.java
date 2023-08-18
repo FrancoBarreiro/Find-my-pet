@@ -14,7 +14,9 @@ public class PostService implements IPostService {
     private IPostRepository postRepository;
 
     @Override
-    public Post addPost(Post post) {
+    public PostDto addPost(PostDto post) {
+
+
         return postRepository.save(post);
     }
 }

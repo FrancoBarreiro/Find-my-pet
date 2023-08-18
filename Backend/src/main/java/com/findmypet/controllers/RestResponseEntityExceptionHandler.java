@@ -3,6 +3,7 @@ package com.findmypet.controllers;
 import com.findmypet.exceptions.BadRequestException;
 import com.findmypet.exceptions.ErrorResponse;
 import com.findmypet.exceptions.ResourceNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDateTime;
 
 @ControllerAdvice
@@ -31,4 +33,9 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
                 HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handlerDataIntegrityViolationException(DataIntegrityViolationException ex) {
+        return new ResponseEntity<>(new ErrorResponse("There is already a record with that username or email", ex.getMessage(),
+                LocalDateTime.now()), HttpStatus.BAD_REQUEST);
+    }
 }

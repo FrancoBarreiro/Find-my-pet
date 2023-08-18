@@ -15,7 +15,7 @@ public class CommentDto {
 
     private String date;
 
-    private UserDto user;
+    private Long userId;
 
-    private PostDto post;
+    private Long postId;
 }
