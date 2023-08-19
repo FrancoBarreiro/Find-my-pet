@@ -7,12 +7,9 @@ import com.findmypet.persistence.entities.User;
 import com.findmypet.persistence.repositories.IUserRepository;
 import com.findmypet.services.IUserService;
 import jakarta.validation.Validator;
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-
-import java.sql.SQLIntegrityConstraintViolationException;
 
 @Service
 public class UserService implements IUserService {
@@ -36,7 +33,9 @@ public class UserService implements IUserService {
                 throw new DataIntegrityViolationException("Email already exists.");
             }
             User userToSave = UserMapper.dtoToEntity(user);
-            return UserMapper.entityToDto(userRepository.save(userToSave));
+            userRepository.save(userToSave);
+            user.setId(userToSave.getId());
+            return user;
         } else {
             throw new BadRequestException("Check the fields");
         }

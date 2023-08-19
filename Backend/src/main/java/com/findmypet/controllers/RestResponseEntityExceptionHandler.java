@@ -35,7 +35,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<Object> handlerDataIntegrityViolationException(DataIntegrityViolationException ex) {
-        return new ResponseEntity<>(new ErrorResponse("There is already a record with that username or email", ex.getMessage(),
+        return new ResponseEntity<>(new ErrorResponse("Check the fields", ex.getMessage(),
                 LocalDateTime.now()), HttpStatus.BAD_REQUEST);
     }
 }

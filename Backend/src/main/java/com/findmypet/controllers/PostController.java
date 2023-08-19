@@ -1,5 +1,6 @@
 package com.findmypet.controllers;
 
+import com.findmypet.dtos.PostDto;
 import com.findmypet.persistence.entities.Post;
 import com.findmypet.services.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +14,20 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("api/v1/posts")
+@RequestMapping("/api/v1/posts")
 public class PostController {
 
     @Autowired
     private IPostService postService;
 
     @PostMapping
-    public ResponseEntity<?> addPost(@RequestBody Post post) {
+    public ResponseEntity<?> addPost(@RequestBody PostDto post) {
 
         postService.addPost(post);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .path("{/id")
+                .path("/{id}")
                 .buildAndExpand(post.getId())
                 .toUri();
 

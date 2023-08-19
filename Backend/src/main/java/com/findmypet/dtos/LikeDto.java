@@ -1,17 +1,19 @@
 package com.findmypet.dtos;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class LikeDto {
 
     private Long id;
 
-    private UserDto user;
+    private Long userId;
 
-    private PostDto post;
+    private Long postId;
 }
