@@ -1,8 +1,8 @@
 package com.findmypet.services;
 
-import com.findmypet.persistence.entities.Comment;
+import com.findmypet.dtos.CommentDto;
 
 public interface ICommentService {
 
-    Comment addComment(Comment comment);
+    CommentDto addComment(CommentDto comment);
 }

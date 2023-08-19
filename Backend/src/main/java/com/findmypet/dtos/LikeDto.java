@@ -1,5 +1,6 @@
 package com.findmypet.dtos;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +13,8 @@ import lombok.NoArgsConstructor;
 public class LikeDto {
 
     private Long id;
-
+    @NotNull
     private Long userId;
-
+    @NotNull
     private Long postId;
 }

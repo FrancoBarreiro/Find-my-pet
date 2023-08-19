@@ -1,8 +1,7 @@
 package com.findmypet.services;
 
-import com.findmypet.persistence.entities.Like;
-
+import com.findmypet.dtos.LikeDto;
 public interface ILikeService {
 
-    Like addLike(Like like);
+    LikeDto addLike(LikeDto like);
 }
