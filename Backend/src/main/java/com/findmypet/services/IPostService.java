@@ -6,4 +6,6 @@ public interface IPostService {
 
     PostDto addPost(PostDto post);
 
+    PostDto getPostById(Long id);
+
 }
