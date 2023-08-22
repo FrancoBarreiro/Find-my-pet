@@ -1,8 +1,10 @@
 package com.findmypet.mappers;
 
 import com.findmypet.dtos.PostDto;
+import com.findmypet.exceptions.BadRequestException;
 import com.findmypet.persistence.entities.Post;
 import com.findmypet.persistence.entities.User;
+import com.findmypet.utils.NotificationType;
 import com.findmypet.utils.PostType;
 
 import java.time.LocalDateTime;
@@ -45,8 +47,7 @@ public class PostMapper {
 
         LocalDateTime date = LocalDateTime.parse(
                 post.getDate() + " " + post.getHour(),
-                localDateTimeFormatter
-        );
+                localDateTimeFormatter);
 
         return Post.builder()
                 .id(post.getId())
