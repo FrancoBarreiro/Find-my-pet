@@ -1,7 +1,6 @@
 package com.findmypet.controllers;
 
 import com.findmypet.dtos.PostDto;
-import com.findmypet.persistence.entities.Post;
 import com.findmypet.services.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +31,23 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getPostById(@PathVariable Long id){
+    public ResponseEntity<?> getPostById(@PathVariable Long id) {
         return ResponseEntity.ok(postService.getPostById(id));
+    }
+
+    @GetMapping("/paged")
+    public ResponseEntity<?> getPostsPaged(@RequestParam int size, @RequestParam int page) {
+        return ResponseEntity.ok(postService.getPostsPaged(size, page));
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updatePost(@RequestBody PostDto post) {
+        return ResponseEntity.ok(postService.updatePost(post));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletePost(@PathVariable Long id) {
+        postService.deletePost(id);
+        return ResponseEntity.noContent().build();
     }
 }

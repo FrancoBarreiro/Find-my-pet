@@ -58,14 +58,14 @@ public class PostMapper {
                 .date(date)
                 .user(User.builder().id(post.getUserId()).build())
                 .imageUrls(new ArrayList<>(post.getImageUrls()))
-                .comments(post.getComments() != null ? post.getComments().stream()
+                /*.comments(post.getComments() != null ? post.getComments().stream()
                         .map(comment -> CommentMapper.dtoToEntity(comment))
                         .collect(Collectors.toList())
                         : Collections.emptyList())
                 .likes(post.getLikes() != null ? post.getLikes().stream()
                         .map(like -> LikeMapper.dtoToEntity(like))
                         .collect(Collectors.toList())
-                        : Collections.emptyList())
+                        : Collections.emptyList())*/
                 .build();
     }
 
