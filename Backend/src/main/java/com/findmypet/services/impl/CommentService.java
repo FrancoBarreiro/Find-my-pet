@@ -47,8 +47,7 @@ public class CommentService implements ICommentService {
         Optional<Comment> commentFound = commentRepository.findById(id);
 
         if (commentFound.isPresent()) {
-            CommentDto comment = CommentMapper.entityToDto(commentFound.get());
-            return comment;
+            return CommentMapper.entityToDto(commentFound.get());
         } else {
             throw new ResourceNotFoundException("Comment not found");
         }

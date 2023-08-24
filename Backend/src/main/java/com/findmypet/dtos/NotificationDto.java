@@ -14,6 +14,8 @@ public class NotificationDto {
     private String type;
     @NonNull
     private Long sender;
+
+    private String senderUsername;
     @NonNull
     private Long recipient;
     @NotBlank

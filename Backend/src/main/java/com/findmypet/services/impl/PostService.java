@@ -46,8 +46,7 @@ public class PostService implements IPostService {
         Optional<Post> postFound = postRepository.findById(id);
 
         if (postFound.isPresent()) {
-            PostDto post = PostMapper.entityToDto(postFound.get());
-            return post;
+            return PostMapper.entityToDto(postFound.get());
         } else {
             throw new ResourceNotFoundException("The post with id :" + id + " was not found");
         }
