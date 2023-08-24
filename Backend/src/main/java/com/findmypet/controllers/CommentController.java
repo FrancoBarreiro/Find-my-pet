@@ -4,10 +4,7 @@ import com.findmypet.dtos.CommentDto;
 import com.findmypet.services.ICommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -20,7 +17,7 @@ public class CommentController {
     private ICommentService commentService;
 
     @PostMapping
-    public ResponseEntity<?> addComment(@RequestBody CommentDto comment){
+    public ResponseEntity<?> addComment(@RequestBody CommentDto comment) {
 
         commentService.addComment(comment);
 
@@ -31,5 +28,26 @@ public class CommentController {
                 .toUri();
 
         return ResponseEntity.created(location).body(comment);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getCommentById(@PathVariable Long id) {
+        return ResponseEntity.ok(commentService.getCommentById(id));
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getCommentsByPost(@RequestParam Long idPost, @RequestParam int size, @RequestParam int page) {
+        return ResponseEntity.ok(commentService.getCommentsPaged(idPost, size, page));
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateComment(@RequestBody CommentDto comment) {
+        return ResponseEntity.ok(commentService.updateComment(comment));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteComment(@PathVariable Long id) {
+        commentService.deleteComment(id);
+        return ResponseEntity.noContent().build();
     }
 }

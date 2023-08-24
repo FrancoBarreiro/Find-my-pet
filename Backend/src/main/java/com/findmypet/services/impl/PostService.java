@@ -73,7 +73,7 @@ public class PostService implements IPostService {
         Optional<Post> postFound = postRepository.findById(post.getId());
 
         if (postFound.isPresent() && validator.validate(post).isEmpty()) {
-            Post postToUpdate = PostMapper.dtoToEntity(post);
+            Post postToUpdate = PostMapper.updateEntityFromDto(post);
             postRepository.save(postToUpdate);
             return post;
         } else {
@@ -91,6 +91,4 @@ public class PostService implements IPostService {
             throw new ResourceNotFoundException("Post not found");
         }
     }
-
-
 }
